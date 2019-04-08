@@ -51,6 +51,7 @@
                                                 </textField>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="h3D-J1-JAj" firstAttribute="leading" secondItem="UrZ-XN-lIJ" secondAttribute="leading" id="04a-YD-fHF"/>
                                             <constraint firstAttribute="trailing" secondItem="h3D-J1-JAj" secondAttribute="trailing" id="8TJ-wF-ObD"/>

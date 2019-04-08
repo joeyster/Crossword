@@ -15,9 +15,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // get a reference to our storyboard cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! MyCollectionViewCell
         
-//        cell.myLabel.text = self.items[indexPath.item]
-//        cell.backgroundColor = UIColor.cyan
-        cell.textField.text = self.items[indexPath.item]
+        if self.items[indexPath.item] == "-"{
+            cell.textField.backgroundColor = UIColor.black
+            cell.textField.isEnabled = false
+        }
+        else{
+            cell.textField.text = self.items[indexPath.item]
+        }
         
         return cell
     }
