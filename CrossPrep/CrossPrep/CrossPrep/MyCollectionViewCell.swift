@@ -1,5 +1,5 @@
 import UIKit
-class MyCollectionViewCell: UICollectionViewCell {
+class MyCollectionViewCell: UICollectionViewCell{
     @IBOutlet var textField: UITextField!
-    
+    @IBOutlet var borderTextField: UITextField!
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40830CE226581DF00061274 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40830CD226581DF00061274 /* CustomButton.swift */; };
 		D44DCC012252C7CD00AD7C41 /* CrosswordsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DCC002252C7CD00AD7C41 /* CrosswordsGenerator.swift */; };
 		D44DCC032252C88E00AD7C41 /* ArrayShuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DCC022252C88E00AD7C41 /* ArrayShuffle.swift */; };
 		D44DCC082252CA4200AD7C41 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DCC072252CA4200AD7C41 /* Array2D.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D40830CD226581DF00061274 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D44DCC002252C7CD00AD7C41 /* CrosswordsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosswordsGenerator.swift; sourceTree = "<group>"; };
 		D44DCC022252C88E00AD7C41 /* ArrayShuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayShuffle.swift; sourceTree = "<group>"; };
 		D44DCC072252CA4200AD7C41 /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				D459A8662252B48C004F9E0C /* ViewController.swift */,
 				D459A8942252B74B004F9E0C /* MyCollectionViewCell.swift */,
 				D459A8682252B48C004F9E0C /* Main.storyboard */,
+				D40830CD226581DF00061274 /* CustomButton.swift */,
 				D44DCC062252C94000AD7C41 /* Crossword Generator */,
 				D459A8642252B48C004F9E0C /* AppDelegate.swift */,
 				D459A86B2252B48D004F9E0C /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 				D44DCC082252CA4200AD7C41 /* Array2D.swift in Sources */,
 				D44DCC032252C88E00AD7C41 /* ArrayShuffle.swift in Sources */,
 				D459A8672252B48C004F9E0C /* ViewController.swift in Sources */,
+				D40830CE226581DF00061274 /* CustomButton.swift in Sources */,
 				D459A8652252B48C004F9E0C /* AppDelegate.swift in Sources */,
 				D459A8952252B74B004F9E0C /* MyCollectionViewCell.swift in Sources */,
 			);
