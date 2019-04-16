@@ -1,15 +1,15 @@
 //
-//  CrossPrepTests.swift
-//  CrossPrepTests
+//  CrosswordPuzzleTests.swift
+//  CrosswordPuzzleTests
 //
-//  Created by Joey Liao on 4/1/19.
+//  Created by Joey Liao on 4/16/19.
 //  Copyright © 2019 Joey Liao. All rights reserved.
 //
 
 import XCTest
-@testable import CrossPrep
+@testable import CrosswordPuzzle
 
-class CrossPrepTests: XCTestCase {
+class CrosswordPuzzleTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
