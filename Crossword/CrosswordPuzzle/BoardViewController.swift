@@ -58,13 +58,14 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(newBoard)
         importJson()
         displayGrid()
         if newBoard{
             generateBoard()
         }
         fillBoard()
+        self.orientationButton.isEnabled = false
+        self.orientationButton.isHidden = true
     }
     
     @IBAction func orientationButton(_ sender: Any) {
@@ -82,9 +83,9 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func resetButton(_ sender: Any) {
         boardStackvView?.removeFromSuperview()
-        displayGrid()
-        generateBoard()
-        fillBoard()
+        self.newBoard = true
+        self.crosswordItems = []
+        viewDidLoad()
     }
     
     func importJson(){
@@ -203,6 +204,8 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.orientationButton.isEnabled = true
+        self.orientationButton.isHidden = false
         self.activeTextField = textField
         self.activeTag = textField.tag
         if self.orientationMode == "across"{
