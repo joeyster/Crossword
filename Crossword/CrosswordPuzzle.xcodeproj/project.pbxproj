@@ -13,6 +13,7 @@
 		D46A3B9C2266DFCE0058DACF /* freevocabulary_words.json in Resources */ = {isa = PBXBuildFile; fileRef = D46A3B9B2266DFCE0058DACF /* freevocabulary_words.json */; };
 		D46A3B9E2266DFD60058DACF /* majortests_words.json in Resources */ = {isa = PBXBuildFile; fileRef = D46A3B9D2266DFD60058DACF /* majortests_words.json */; };
 		D46A3BA02266F6FB0058DACF /* MainMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A3B9F2266F6FB0058DACF /* MainMenuVC.swift */; };
+		D46A3BA2226731860058DACF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46A3BA1226731860058DACF /* SettingsVC.swift */; };
 		D4CE4A842265D50D0044C97D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CE4A832265D50D0044C97D /* AppDelegate.swift */; };
 		D4CE4A862265D50D0044C97D /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CE4A852265D50D0044C97D /* BoardViewController.swift */; };
 		D4CE4A892265D50D0044C97D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CE4A872265D50D0044C97D /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		D46A3B9B2266DFCE0058DACF /* freevocabulary_words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = freevocabulary_words.json; sourceTree = "<group>"; };
 		D46A3B9D2266DFD60058DACF /* majortests_words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = majortests_words.json; sourceTree = "<group>"; };
 		D46A3B9F2266F6FB0058DACF /* MainMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuVC.swift; sourceTree = "<group>"; };
+		D46A3BA1226731860058DACF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = CrosswordPuzzle/SettingsVC.swift; sourceTree = SOURCE_ROOT; };
 		D4CE4A802265D50D0044C97D /* CrosswordPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrosswordPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CE4A832265D50D0044C97D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4CE4A852265D50D0044C97D /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				D46A3B9F2266F6FB0058DACF /* MainMenuVC.swift */,
 				D4CE4A852265D50D0044C97D /* BoardViewController.swift */,
+				D46A3BA1226731860058DACF /* SettingsVC.swift */,
 				D4CE4A872265D50D0044C97D /* Main.storyboard */,
 				D46A3B952266D1730058DACF /* Crossword Generator */,
 				D4CE4AB12265D57A0044C97D /* CustomButton.swift */,
@@ -300,6 +303,7 @@
 				D46A3B922266D14A0058DACF /* ArrayShuffle.swift in Sources */,
 				D46A3B902266D1310058DACF /* Array2D.swift in Sources */,
 				D4CE4A842265D50D0044C97D /* AppDelegate.swift in Sources */,
+				D46A3BA2226731860058DACF /* SettingsVC.swift in Sources */,
 				D46A3B942266D1640058DACF /* CrosswordsGenerator.swift in Sources */,
 				D4CE4AB22265D57A0044C97D /* CustomButton.swift in Sources */,
 			);

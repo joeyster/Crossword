@@ -52,6 +52,9 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     var jsonFile: [Any] = []
     var crosswordItems: [Any] = []
     var items:[String] = []
+    var wordStart: Int?
+    var wordEnd: Int?
+    var hintMode: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,8 +114,30 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     }
     
     func hintHandler(){
-        print(crosswordObject!.result)
-        
+        if hintMode! {
+            var answer: String = ""
+            if self.orientationMode == "across" {
+                for index in wordStart!...wordEnd!{
+                    answer = answer + items[index]
+                }
+            }
+            else if self.orientationMode == "down" {
+                for index in stride(from: wordStart!, to: wordEnd!+1, by: 15){
+                    answer = answer + items[index]
+                }
+            }
+            
+            var temp:Dictionary<String,Any>
+            for index in 0...19{
+                temp = crosswordItems[index] as! Dictionary<String,Any>
+                if answer == temp["word"] as! String {
+                    hintsLabel.text  = (temp["definition"] as! String)
+                }
+            }
+        }
+        else{
+            hintsLabel.text  = "Hints disabled"
+        }
     }
     
     //set bg colors + hints
@@ -122,6 +147,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
             if let nextField = activeTextField.superview?.viewWithTag(activeTag - temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
+            self.wordStart = activeTag-temp
             temp += 1
             if activeTag - temp < 0{ break }
         }
@@ -130,6 +156,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
             if let nextField = activeTextField.superview?.viewWithTag(activeTag + temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
+            self.wordEnd = activeTag+temp
             temp += 1
             if activeTag + temp >= items.count { break }
         }
@@ -142,6 +169,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
             if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag - temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
+            self.wordStart = activeTag - temp
             temp += 15
             if activeTag - temp < 0 { break }
         }
@@ -150,6 +178,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
             if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag + temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
+            self.wordEnd = activeTag + temp
             temp += 15
             if activeTag + temp > 15*14 { break }
         }
@@ -157,7 +186,6 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        hintHandler()
         self.activeTextField = textField
         self.activeTag = textField.tag
         if self.orientationMode == "across"{
@@ -166,6 +194,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         else if self.orientationMode == "down"{
             highlightColumn()
         }
+        hintHandler()
         textField.inputView = UIView() //dismiss keyboard
     }
     
@@ -371,7 +400,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         var generatorArray: [String] = []
         var temp:Dictionary<String,Any>
         for _ in 1...20{
-            let number = Int.random(in: 0 ..< 1000)
+            let number = Int.random(in: 0 ... 999)
             temp = jsonFile[number] as! Dictionary<String,Any>
             self.crosswordItems.append(temp)
             generatorArray.append(temp["word"] as! String)
@@ -392,15 +421,21 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
                     crosswordGrid![row][column].backgroundColor = UIColor.black
                     crosswordGrid![row][column].isEnabled = false
                 }
-                else{
-                    crosswordGrid![row][column].text = items[index]
-                    crosswordGrid![row][column].text = crosswordGrid![row][column].text?.uppercased()
-                }
+//                else{
+//                    crosswordGrid![row][column].text = items[index]
+//                    crosswordGrid![row][column].text = crosswordGrid![row][column].text?.uppercased()
+//                }
                 index += 1
             }
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? SettingsVC
+        if segue.identifier == "settingsSegue"{
+            vc?.hintMode = self.hintMode
+        }
+    }
     
 }
 

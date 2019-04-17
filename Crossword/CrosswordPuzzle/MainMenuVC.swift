@@ -18,7 +18,15 @@ class MainMenuVC: UIViewController {
         let vc = segue.destination as? BoardViewController
         if segue.identifier == "dynamicSegue"{
             vc!.mode = "dynamic"
+            let status = UserDefaults.standard.bool(forKey: "hintsBool")
+            if status == true || status == false{
+                vc?.hintMode = status
+            }
+            else{
+                vc?.hintMode = true
+            }
         }
+            //coming soon
         else if segue.identifier == "presetSegue"{
             vc!.mode = "preset"
         }
