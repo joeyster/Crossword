@@ -963,6 +963,31 @@
                                     <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gwa-U9-Ves"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyX-vG-Udr" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
+                                <rect key="frame" x="336.66666666666669" y="672.66666666666663" width="56" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="42Y-lI-txl"/>
+                                    <constraint firstAttribute="height" constant="45" id="G2d-Ao-hCP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Fill box">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="fillBoxButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jeT-um-iac"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -985,7 +1010,9 @@
                             <constraint firstItem="GRR-cK-LlO" firstAttribute="trailing" secondItem="hrA-ky-Bk3" secondAttribute="trailing" id="msN-Nv-GqV"/>
                             <constraint firstItem="fyE-te-872" firstAttribute="leading" secondItem="STP-QR-Ioc" secondAttribute="trailing" constant="7.6699999999999999" id="qbi-KO-Rhw"/>
                             <constraint firstItem="N6i-Mp-mvv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="s1V-dy-LY8"/>
+                            <constraint firstItem="oyX-vG-Udr" firstAttribute="leading" secondItem="fyE-te-872" secondAttribute="trailing" constant="7" id="w5j-d8-Nn1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="23d-Xk-kU3" secondAttribute="trailing" constant="8" id="wgS-Zm-XuA"/>
+                            <constraint firstItem="oyX-vG-Udr" firstAttribute="baseline" secondItem="STP-QR-Ioc" secondAttribute="baseline" id="zpT-Qw-Qjg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -1031,7 +1058,6 @@
         <image name="logo" width="2749" height="443"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pG6-r6-EgX"/>
-        <segue reference="iBZ-Ih-gRj"/>
+        <segue reference="Ohr-AU-DTr"/>
     </inferredMetricsTieBreakers>
 </document>

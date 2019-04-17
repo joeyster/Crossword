@@ -113,6 +113,20 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func fillBoxButton(_ sender: Any) {
+        self.activeTextField.text = items[activeTag].uppercased()
+        if self.orientationMode == "across"{
+            if let nextField = activeTextField.superview?.viewWithTag(activeTag + 1) as? UITextField {
+                nextField.becomeFirstResponder()
+            }
+        }
+        else if self.orientationMode == "down"{
+            if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag + 15) as? UITextField {
+                nextField.becomeFirstResponder()
+            }
+        }
+    }
+    
     func hintHandler(){
         if hintMode! {
             var answer: String = ""
