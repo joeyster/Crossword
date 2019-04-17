@@ -8,18 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
-    
-    let items = ["A","E","F",".",".","R","A","J","A","H",".","A","T","T","A","C","L","O","T",".","A","N","A","M","E",".","S","H","O","P","T","A","R","E",".","M","I","N","E","R",".","T","E","N","T","I","N","A","N","E",".","S","U","N","B","E","A","M","S",".",".","D","U","S","T","S",".","A","D","A","G","I","O",".",".",".",".","L","E","A","N","E","R",".","L","A","R","R","U","P","P","A","D",".","S","A","T","Y","R",".","D","E","N","S","E","A","L","L","A",".","P","A","T","E","R",".","S","I","N","E","R","I","A","N","T",".","T","H","E","I","R",".","N","A","P","C","A","N","N","O","T",".","E","D","G","I","N","G",".",".",".",".","G","O","T","O","F","F",".","A","L","I","A","S",".",".","A","S","T","E","R","O","I","D",".","E","L","F","I","N","A","N","Y","A",".","E","R","R","O","L",".","E","T","N","A","D","O","N","T",".","R","E","S","T","E",".","S","E","C","T","S","N","E","E",".","O","S","T","E","O",".",".","R","E","O"
-    ]
-    
-    let gridnums = [1,2,3,0,0,4,5,6,7,8,0,9,10,11,12,13,0,0,14,0,15,0,0,0,0,0,16,0,0,0,17,0,0,0,0,18,0,0,0,0,0,19,0,0,0,20,0,0,0,21,0,22,0,0,0,23,0,0,0,0,0,24,0,0,0,25,0,26,0,0,0,0,0,0,0,0,0,27,0,0,0,28,0,0,29,0,0,0,30,31,32,33,0,0,34,0,0,0,35,0,36,0,0,0,0,37,0,0,38,0,39,0,0,0,40,0,41,0,0,0,42,0,0,0,43,0,44,0,0,0,45,0,46,0,0,47,0,0,0,0,48,0,49,0,0,0,50,0,0,0,0,0,51,0,0,0,52,0,0,53,0,0,0,54,0,0,55,0,0,0,0,0,0,56,0,57,0,0,0,58,59,0,0,0,0,60,0,0,0,61,0,62,0,0,0,63,0,0,0,0,64,0,0,0,0,0,65,0,0,0,66,0,0,0,0,67,0,0,0,0,0,0,68,0,0
-    ]
-    
-    let acrossHints = ["s1. Pershing's men in Eur.","s4. Hindu noble","s9. \"___ boy!\"","s13. Coagulate","s15. \"What's in ___?\"","s16. Boutique","s17. Vetch","s18. Clementine's dad","s19. Campsite need","s20. Ridiculous","s22. Rays of light","s24. Does a household chore","s26. Slow movement in music","s27. Point in horseshoes","s29. Whale","s32. Tramp along","s34. Lecher","s36. Thick","s37. ___ breve","s39. Nero's father","s41. Angle ratio","s42. Laughing","s44. Churchill's \"___ Finest Hour\"","s46. Aspect of velvet","s47. Is unable","s49. Trim","s51. Escaped punishment","s53. Kind of writ","s55. Minor planet","s57. Puckish","s59. Chekhov heroine","s60. Little Lord Fauntleroy","s62. Volcano in Sicily","s63. Common contraction","s64. Remainder, in Marseille","s65. Faction","s66. Koko's weapon","s67. Bone: Comb. form","s68. Culprit, in Calabria"]
-    
-    let downHints = ["s1. First of five in \"Hamlet\"","s2. Klipspringer's big cousin","s3. Words from a New Year's song","s4. Butter","s5. Witch birds","s6. Time for resolutions","s7. Revise","s8. Book about plants","s9. Fred and Adele","s10. Celebrant's time for sorrow","s11. Gobs","s12. Appropriate","s14. Past or future","s21. Greek letters","s23. Mild oath, old style","s25. Kind of dragon","s28. French state","s30. Annapolis abbr.","s31. Hen's first word","s32. Open space in Paris","s33. Inter ___","s35. Tall grass","s38. Add footnotes","s40. Latvian city","s43. Carry a burden","s45. Get under one's skin","s48. Bullfighter","s50. McKinley's Ohio birthplace","s52. Golfers' warnings","s54. Because","s55. Soon","s56. Show senility","s58. Western alliance: Abbr.","s59. Some are classified","s61. Zodiac sign"]
-    
+class BoardViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var Q: CustomButton!
     @IBOutlet var W: CustomButton!
     @IBOutlet var E: CustomButton!
@@ -50,92 +39,173 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var M: CustomButton!
 
     @IBOutlet var hintsLabel: UILabel!
+    @IBOutlet var orientationButton: CustomButton!
+    
+    var crosswordObject: CrosswordsGenerator?
+    var highlightedWord: String?
+    var mode: String?
+    var orientationMode = "across"
+    var boardStackvView: UIStackView?
     var crosswordGrid: [[UITextField]]?
     var activeTextField = UITextField()
     var activeTag = -1
+    var jsonFile: [Any] = []
+    var crosswordItems: [Any] = []
+    var items:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        importJson()
         displayGrid()
+        generateBoard()
         fillBoard()
+    }
+    
+    @IBAction func orientationButton(_ sender: Any) {
+        textFieldDidEndEditing(self.activeTextField)
+        if self.orientationMode == "across"{
+            self.orientationMode = "down"
+            self.orientationButton.setTitle("⬆⬇", for: .normal)
+        }
+        else if self.orientationMode == "down"{
+            self.orientationMode = "across"
+            self.orientationButton.setTitle("⬅➡", for: .normal)
+        }
+        textFieldDidBeginEditing(self.activeTextField)
+    }
+    
+    @IBAction func resetButton(_ sender: Any) {
+        boardStackvView?.removeFromSuperview()
+        displayGrid()
+        generateBoard()
+        fillBoard()
+    }
+    
+    func importJson(){
+        if let path = Bundle.main.path(forResource: "majortests_words", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, Any>, let results = jsonResult["results"] as? [Any] {
+                    self.jsonFile = results
+                }
+            } catch {
+                print("something wrong")
+            }
+        }
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
         let button = sender as! UIButton
-        activeTextField.text = button.titleLabel!.text!
-        if let nextField = activeTextField.superview?.viewWithTag(activeTag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
+        self.activeTextField.text = button.titleLabel!.text!
+        if self.orientationMode == "across"{
+            if let nextField = activeTextField.superview?.viewWithTag(activeTag + 1) as? UITextField {
+                nextField.becomeFirstResponder()
+            }
         }
+        else if self.orientationMode == "down"{
+            if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag + 15) as? UITextField {
+                nextField.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func hintHandler(){
+        print(crosswordObject!.result)
+        
     }
     
     //set bg colors + hints
     func highlightRow(){
         var temp = 0
-        while items[activeTag + temp] != "." {
+        while items[activeTag - temp] != "-" {
+            if let nextField = activeTextField.superview?.viewWithTag(activeTag - temp) as? UITextField {
+                nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
+            }
+            temp += 1
+            if activeTag - temp < 0{ break }
+        }
+        temp = 0
+        while items[activeTag + temp] != "-" {
             if let nextField = activeTextField.superview?.viewWithTag(activeTag + temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
             temp += 1
             if activeTag + temp >= items.count { break }
         }
-        temp = 0
-        while items[activeTag - temp] != "." {
-            if let nextField = activeTextField.superview?.viewWithTag(activeTag - temp) as? UITextField {
+        activeTextField.backgroundColor = UIColor.yellow
+    }
+    
+    func highlightColumn(){
+        var temp = 0
+        while items[activeTag - temp] != "-" {
+            if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag - temp) as? UITextField {
                 nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
-            temp += 1
-            for hint in acrossHints{
-                if hint.contains("s"+String(gridnums[activeTag - temp + 1])+"."){
-                    let startOfHint = hint.firstIndex(of: " ")!
-                    let fullHint = hint[startOfHint...]
-                    hintsLabel.text = String(fullHint)
-                }
+            temp += 15
+            if activeTag - temp < 0 { break }
+        }
+        temp = 0
+        while items[activeTag + temp] != "-" {
+            if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag + temp) as? UITextField {
+                nextField.backgroundColor = UIColor(red: 255/255, green: 243/255, blue: 159/255, alpha: 1)
             }
-            if activeTag - temp < 0{ break }
+            temp += 15
+            if activeTag + temp > 15*14 { break }
         }
         activeTextField.backgroundColor = UIColor.yellow
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        hintHandler()
         self.activeTextField = textField
         self.activeTag = textField.tag
-        highlightRow()
+        if self.orientationMode == "across"{
+            highlightRow()
+        }
+        else if self.orientationMode == "down"{
+            highlightColumn()
+        }
         textField.inputView = UIView() //dismiss keyboard
     }
     
     //reset bg colours
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeTextField.backgroundColor = UIColor.clear
-        var temp = 0
-        while items[activeTag + temp] != "." {
-            if let nextField = activeTextField.superview?.viewWithTag(activeTag + temp) as? UITextField {
-                nextField.backgroundColor = UIColor.clear
-            }
-            temp += 1
-            if activeTag + temp >= items.count { break }
-        }
-        temp = 0
-        while items[activeTag - temp] != "." {
-            if let nextField = activeTextField.superview?.viewWithTag(activeTag - temp) as? UITextField {
-                nextField.backgroundColor = UIColor.clear
-            }
-            temp += 1
-            if activeTag - temp < 0{ break }
-        }
-    }
-    
-    func fillBoard(){
-        var index = 0
-        for row in 0...14{
-            for column in 0...14{
-                if items[index] == "."{
-                    crosswordGrid![row][column].backgroundColor = UIColor.black
-                    crosswordGrid![row][column].isEnabled = false
+        if orientationMode == "across"{
+            var temp = 0
+            while items[activeTag + temp] != "-" {
+                if let nextField = activeTextField.superview?.viewWithTag(activeTag + temp) as? UITextField {
+                    nextField.backgroundColor = UIColor.clear
                 }
-                else{
-                    crosswordGrid![row][column].text = items[index]
+                temp += 1
+                if activeTag + temp >= items.count { break }
+            }
+            temp = 0
+            while items[activeTag - temp] != "-" {
+                if let nextField = activeTextField.superview?.viewWithTag(activeTag - temp) as? UITextField {
+                    nextField.backgroundColor = UIColor.clear
                 }
-                index += 1
+                temp += 1
+                if activeTag - temp < 0{ break }
+            }
+        }
+        else if orientationMode == "down" {
+            var temp = 0
+            while items[activeTag + temp] != "-" {
+                if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag + temp) as? UITextField {
+                    nextField.backgroundColor = UIColor.clear
+                }
+                temp += 15
+                if activeTag + temp > 15*14 { break }
+            }
+            temp = 0
+            while items[activeTag - temp] != "-" {
+                if let nextField = activeTextField.superview?.superview?.viewWithTag(activeTag - temp) as? UITextField {
+                    nextField.backgroundColor = UIColor.clear
+                }
+                temp += 15
+                if activeTag - temp < 0 { break }
             }
         }
     }
@@ -270,8 +340,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //put the newly made stack views into a stackview
         let stackView = UIStackView(arrangedSubviews: [subStackViewA,subStackViewB,subStackViewC,subStackViewD,subStackViewE,
-            subStackViewF,subStackViewG,subStackViewH,subStackViewI,subStackViewJ,
-            subStackViewK,subStackViewL,subStackViewM,subStackViewN,subStackViewO])
+                                                       subStackViewF,subStackViewG,subStackViewH,subStackViewI,subStackViewJ,
+                                                       subStackViewK,subStackViewL,subStackViewM,subStackViewN,subStackViewO])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -287,13 +357,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
             metrics: nil,
             views: viewsDictionary)
         let stackView_V = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:|-100-[stackView]-250-|",
+            withVisualFormat: "V:|-120-[stackView]-250-|",
             options: NSLayoutConstraint.FormatOptions(rawValue:0),
             metrics: nil,
             views: viewsDictionary)
         view.addConstraints(stackView_H)
         view.addConstraints(stackView_V)
+        self.boardStackvView = stackView
         self.crosswordGrid = subStackViewArray
     }
+    
+    func generateBoard(){
+        var generatorArray: [String] = []
+        var temp:Dictionary<String,Any>
+        for _ in 1...20{
+            let number = Int.random(in: 0 ..< 1000)
+            temp = jsonFile[number] as! Dictionary<String,Any>
+            self.crosswordItems.append(temp)
+            generatorArray.append(temp["word"] as! String)
+        }
+        
+        let crosswordsGenerator = CrosswordsGenerator(columns: 15, rows: 15, words: generatorArray)
+        crosswordsGenerator.fillAllWords = true
+        crosswordsGenerator.generate()
+        self.items = crosswordsGenerator.grid!.matrix
+        self.crosswordObject = crosswordsGenerator
+    }
+    
+    func fillBoard(){
+        var index = 0
+        for row in 0...14{
+            for column in 0...14{
+                if items[index] == "-"{
+                    crosswordGrid![row][column].backgroundColor = UIColor.black
+                    crosswordGrid![row][column].isEnabled = false
+                }
+                else{
+                    crosswordGrid![row][column].text = items[index]
+                    crosswordGrid![row][column].text = crosswordGrid![row][column].text?.uppercased()
+                }
+                index += 1
+            }
+        }
+    }
+    
+    
 }
 

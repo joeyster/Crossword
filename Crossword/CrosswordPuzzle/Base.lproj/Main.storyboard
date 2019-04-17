@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5JO-JE-xpL">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,16 +10,100 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main MenuVC-->
+        <scene sceneID="zhm-Hb-hEY">
+            <objects>
+                <viewController id="5JO-JE-xpL" customClass="MainMenuVC" customModule="CrosswordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KDy-WD-NXP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Main_Menu" translatesAutoresizingMaskIntoConstraints="NO" id="syV-Ct-mpG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuz-GW-4sW" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
+                                <rect key="frame" x="133.66666666666666" y="382" width="146.99999999999997" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="UvE-y6-CS1"/>
+                                    <constraint firstAttribute="width" constant="147" id="kyY-HQ-nDF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dynamicPressed:" destination="ep2-Dc-KVS" eventType="touchUpInside" id="sMK-sN-0oj"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="dynamicSegue" animates="NO" id="Ohr-AU-DTr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R7z-EP-YS3" firstAttribute="bottom" secondItem="uuz-GW-4sW" secondAttribute="bottom" constant="300" id="f3b-VY-vRq"/>
+                            <constraint firstItem="uuz-GW-4sW" firstAttribute="centerX" secondItem="KDy-WD-NXP" secondAttribute="centerX" id="qbA-se-H8v"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R7z-EP-YS3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R87-WD-jwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ep2-Dc-KVS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-781.15942028985512" y="-68.478260869565219"/>
+        </scene>
         <!--View Controller-->
+        <scene sceneID="mLq-hT-u1t">
+            <objects>
+                <viewController id="ePR-Vu-GDb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vSU-MD-eA8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="3G9-0B-Es1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9jN-W0-Oi2">
+                                <rect key="frame" x="98" y="40" width="220" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="c0m-PX-5sp"/>
+                                    <constraint firstAttribute="height" constant="42" id="zEW-fC-dvv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9jN-W0-Oi2" firstAttribute="top" secondItem="8hQ-0K-fpN" secondAttribute="top" constant="20" id="NS5-sO-kb8"/>
+                            <constraint firstItem="9jN-W0-Oi2" firstAttribute="leading" secondItem="8hQ-0K-fpN" secondAttribute="leading" constant="98" id="ihT-Iw-VOE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8hQ-0K-fpN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZh-7i-dOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4.3478260869565224" y="-716.57608695652175"/>
+        </scene>
+        <!--Board View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CrosswordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BoardViewController" customModule="CrosswordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-31-A2r" userLabel="QWER">
-                                <rect key="frame" x="29.666666666666657" y="573" width="355" height="45"/>
+                                <rect key="frame" x="28.666666666666657" y="573" width="355" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcd-8D-Vex" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="45"/>
@@ -294,7 +378,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hrA-ky-Bk3" userLabel="ASDF">
-                                <rect key="frame" x="47.666666666666657" y="621" width="319" height="45"/>
+                                <rect key="frame" x="46.666666666666657" y="621" width="319" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96Q-72-Gbo" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="45"/>
@@ -542,7 +626,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fyE-te-872" userLabel="ZXCV">
-                                <rect key="frame" x="83.666666666666686" y="671" width="247" height="45"/>
+                                <rect key="frame" x="82.666666666666686" y="671" width="247" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igS-Qm-UTw" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="31" height="45"/>
@@ -736,24 +820,118 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hints" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRR-cK-LlO">
-                                <rect key="frame" x="47" y="499" width="319" height="53"/>
+                                <rect key="frame" x="46.666666666666657" y="506" width="319" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="STP-QR-Ioc" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
+                                <rect key="frame" x="19" y="671" width="56" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Qdp-bp-NKa"/>
+                                    <constraint firstAttribute="width" constant="56" id="SrD-Is-EJq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="⬅➡">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="orientationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pl9-k0-xDX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6i-Mp-mvv" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
+                                <rect key="frame" x="8" y="40" width="80" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Jdp-BU-Okg"/>
+                                    <constraint firstAttribute="width" constant="80" id="gpQ-TB-ejD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v0H-at-v6K"/>
+                                    <segue destination="ePR-Vu-GDb" kind="show" id="pG6-r6-EgX"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4DG-NB-zvK">
+                                <rect key="frame" x="98" y="40" width="220" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Weh-Xb-7KD"/>
+                                    <constraint firstAttribute="height" constant="42" id="dPa-7P-H3O"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23d-Xk-kU3" customClass="CustomButton" customModule="CrosswordPuzzle" customModuleProvider="target">
+                                <rect key="frame" x="326" y="40" width="80" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="2Ue-AH-lED"/>
+                                    <constraint firstAttribute="height" constant="42" id="oRb-u9-dqZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="New">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gwa-U9-Ves"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qcm-31-A2r" firstAttribute="top" secondItem="GRR-cK-LlO" secondAttribute="bottom" constant="21" id="0mb-OZ-d93"/>
+                            <constraint firstItem="qcm-31-A2r" firstAttribute="top" secondItem="GRR-cK-LlO" secondAttribute="bottom" constant="14" id="0mb-OZ-d93"/>
+                            <constraint firstItem="4DG-NB-zvK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="72f-hY-sNw"/>
+                            <constraint firstItem="STP-QR-Ioc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="Epp-fA-2i2"/>
+                            <constraint firstItem="STP-QR-Ioc" firstAttribute="top" secondItem="hrA-ky-Bk3" secondAttribute="bottom" constant="5" id="Gb1-zr-ftV"/>
                             <constraint firstItem="hrA-ky-Bk3" firstAttribute="centerX" secondItem="fyE-te-872" secondAttribute="centerX" id="J1l-jK-hKP"/>
+                            <constraint firstItem="23d-Xk-kU3" firstAttribute="leading" secondItem="4DG-NB-zvK" secondAttribute="trailing" constant="8" id="JLL-FU-iX2"/>
                             <constraint firstAttribute="bottom" secondItem="fyE-te-872" secondAttribute="bottom" constant="20" symbolic="YES" id="KpO-As-E0g"/>
                             <constraint firstItem="fyE-te-872" firstAttribute="top" secondItem="hrA-ky-Bk3" secondAttribute="bottom" constant="5" id="Lb5-na-fso"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="STP-QR-Ioc" secondAttribute="bottom" constant="20" id="Lwt-9h-U3G"/>
                             <constraint firstItem="hrA-ky-Bk3" firstAttribute="top" secondItem="qcm-31-A2r" secondAttribute="bottom" constant="3" id="Qu4-z2-HhH"/>
+                            <constraint firstItem="23d-Xk-kU3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ya5-5X-W3I"/>
                             <constraint firstItem="GRR-cK-LlO" firstAttribute="leading" secondItem="hrA-ky-Bk3" secondAttribute="leading" id="f5C-do-66Y"/>
-                            <constraint firstItem="GRR-cK-LlO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="479" id="g1T-nc-Q9c"/>
+                            <constraint firstItem="GRR-cK-LlO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="486" id="g1T-nc-Q9c"/>
+                            <constraint firstItem="N6i-Mp-mvv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="h4d-6b-JXa"/>
+                            <constraint firstItem="4DG-NB-zvK" firstAttribute="leading" secondItem="N6i-Mp-mvv" secondAttribute="trailing" constant="10" id="hr1-8d-cxP"/>
                             <constraint firstItem="GRR-cK-LlO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iPJ-j3-5Zq"/>
                             <constraint firstItem="qcm-31-A2r" firstAttribute="centerX" secondItem="hrA-ky-Bk3" secondAttribute="centerX" id="lBQ-5G-V7N"/>
                             <constraint firstItem="GRR-cK-LlO" firstAttribute="trailing" secondItem="hrA-ky-Bk3" secondAttribute="trailing" id="msN-Nv-GqV"/>
+                            <constraint firstItem="fyE-te-872" firstAttribute="leading" secondItem="STP-QR-Ioc" secondAttribute="trailing" constant="7.6699999999999999" id="qbi-KO-Rhw"/>
+                            <constraint firstItem="N6i-Mp-mvv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="s1V-dy-LY8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="23d-Xk-kU3" secondAttribute="trailing" constant="8" id="wgS-Zm-XuA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -785,11 +963,17 @@
                         <outlet property="Y" destination="OOI-NQ-t4Z" id="q8m-vX-LpD"/>
                         <outlet property="Z" destination="igS-Qm-UTw" id="Uoi-j7-6ge"/>
                         <outlet property="hintsLabel" destination="GRR-cK-LlO" id="Oiz-h5-q3p"/>
+                        <outlet property="orientationButton" destination="STP-QR-Ioc" id="8uR-Ti-Mcu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="-68"/>
+            <point key="canvasLocation" x="-4.3478260869565224" y="-68.478260869565219"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Main_Menu" width="3784" height="6749"/>
+        <image name="Settings" width="3785" height="6749"/>
+        <image name="logo" width="2749" height="443"/>
+    </resources>
 </document>
