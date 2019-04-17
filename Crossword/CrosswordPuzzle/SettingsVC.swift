@@ -12,6 +12,8 @@ class SettingsVC: UIViewController {
     
     @IBOutlet var hintSwitch: UISwitch!
     var hintMode: Bool?
+    var itemsHolder: [String] = []
+    var crosswordItemsHolder: [Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +24,10 @@ class SettingsVC: UIViewController {
         let vc = segue.destination as? BoardViewController
         if segue.identifier == "backSegue"{
             vc?.hintMode = hintSwitch.isOn
-            UserDefaults.standard.set(hintSwitch.isOn, forKey: "hintsBool")
+            
+            vc?.items = self.itemsHolder
+            vc?.crosswordItems = self.crosswordItemsHolder
+            vc?.newBoard = false
         }
     }
 }

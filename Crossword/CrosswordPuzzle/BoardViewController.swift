@@ -41,9 +41,9 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var hintsLabel: UILabel!
     @IBOutlet var orientationButton: CustomButton!
     
-    var crosswordObject: CrosswordsGenerator?
     var highlightedWord: String?
     var mode: String?
+    var newBoard = true
     var orientationMode = "across"
     var boardStackvView: UIStackView?
     var crosswordGrid: [[UITextField]]?
@@ -58,9 +58,12 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(newBoard)
         importJson()
         displayGrid()
-        generateBoard()
+        if newBoard{
+            generateBoard()
+        }
         fillBoard()
     }
     
@@ -93,7 +96,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
                     self.jsonFile = results
                 }
             } catch {
-                print("something wrong")
+                print(error.localizedDescription)
             }
         }
     }
@@ -424,7 +427,6 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         crosswordsGenerator.fillAllWords = true
         crosswordsGenerator.generate()
         self.items = crosswordsGenerator.grid!.matrix
-        self.crosswordObject = crosswordsGenerator
     }
     
     func fillBoard(){
@@ -448,6 +450,8 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         let vc = segue.destination as? SettingsVC
         if segue.identifier == "settingsSegue"{
             vc?.hintMode = self.hintMode
+            vc?.itemsHolder = self.items
+            vc?.crosswordItemsHolder = self.crosswordItems
         }
     }
     
