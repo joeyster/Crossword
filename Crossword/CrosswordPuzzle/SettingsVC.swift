@@ -21,7 +21,7 @@ class SettingsVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? BoardViewController
+        let vc = segue.destination as? BoardVC
         if segue.identifier == "backSegue"{
             vc?.hintMode = hintSwitch.isOn
             

@@ -14,7 +14,7 @@ class MainMenuVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? BoardViewController
+        let vc = segue.destination as? BoardVC
         if segue.identifier == "dynamicSegue"{
             vc!.mode = "dynamic"
             let status = UserDefaults.standard.bool(forKey: "hintsBool")

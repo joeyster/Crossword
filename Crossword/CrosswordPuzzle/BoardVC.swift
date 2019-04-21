@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BoardViewController: UIViewController, UITextFieldDelegate {
+class BoardVC: UIViewController, UITextFieldDelegate {
     @IBOutlet var Q: CustomButton!
     @IBOutlet var W: CustomButton!
     @IBOutlet var E: CustomButton!
@@ -158,7 +158,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //set bg colors + hints
+    //set bg colors + hints for rows
     func highlightRow(){
         var temp = 0
         while items[activeTag - temp] != "-" {
@@ -167,7 +167,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
             }
             self.wordStart = activeTag-temp
             temp += 1
-            if activeTag - temp < 0{ break }
+            if activeTag - temp < 0 { break }
         }
         temp = 0
         while items[activeTag + temp] != "-" {
@@ -181,6 +181,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         activeTextField.backgroundColor = UIColor.yellow
     }
     
+    //set bg colors + hints for rows
     func highlightColumn(){
         var temp = 0
         while items[activeTag - temp] != "-" {
@@ -210,6 +211,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         self.activeTag = textField.tag
         if self.orientationMode == "across"{
             highlightRow()
+            
         }
         else if self.orientationMode == "down"{
             highlightColumn()
@@ -218,9 +220,9 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         textField.inputView = UIView() //dismiss keyboard
     }
     
-    //reset bg colours
+    //reset bg colours so the solid yellow doesnt stay
     func textFieldDidEndEditing(_ textField: UITextField) {
-        activeTextField.backgroundColor = UIColor.clear
+        self.activeTextField.backgroundColor = UIColor.clear
         if orientationMode == "across"{
             var temp = 0
             while items[activeTag + temp] != "-" {
@@ -259,6 +261,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //creates stackview of buttons
     func displayGrid(){
         //creates the buttons and array of buttons
         var subStackViewArray = [[UITextField]]()
@@ -416,11 +419,13 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         self.crosswordGrid = subStackViewArray
     }
     
+    //create board items
     func generateBoard(){
         var generatorArray: [String] = []
         var temp:Dictionary<String,Any>
         for _ in 1...20{
             let number = Int.random(in: 0 ... 999)
+            print(number)
             temp = jsonFile[number] as! Dictionary<String,Any>
             self.crosswordItems.append(temp)
             generatorArray.append(temp["word"] as! String)
@@ -432,6 +437,7 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
         self.items = crosswordsGenerator.grid!.matrix
     }
     
+    //black and white the board
     func fillBoard(){
         var index = 0
         for row in 0...14{
@@ -440,10 +446,6 @@ class BoardViewController: UIViewController, UITextFieldDelegate {
                     crosswordGrid![row][column].backgroundColor = UIColor.black
                     crosswordGrid![row][column].isEnabled = false
                 }
-//                else{
-//                    crosswordGrid![row][column].text = items[index]
-//                    crosswordGrid![row][column].text = crosswordGrid![row][column].text?.uppercased()
-//                }
                 index += 1
             }
         }
